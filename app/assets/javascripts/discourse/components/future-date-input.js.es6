@@ -109,7 +109,10 @@ export default Component.extend({
     }
 
     if (isCustom) {
-      return date || time;
+      if (date) {
+        return moment(`${date}${time ? " " + time : ""}`).isAfter(moment());
+      }
+      return time;
     } else {
       return input;
     }
